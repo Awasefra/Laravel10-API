@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 //import Resource "PostResource"
-use App\Http\Resources\PostResource;
+use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 
 //import Facade "Validator"
@@ -27,7 +27,7 @@ class EmployeeController extends Controller
         $employeess = Employee::latest()->get();
 
         //return collection of posts as a resource
-        return new PostResource(true, 'List Data', $employeess);
+        return new EmployeeResource(true, 'List Data', $employeess);
     }
 
     /**
@@ -54,7 +54,7 @@ class EmployeeController extends Controller
         ]);
 
         //return response
-        return new PostResource(true, 'Data Berhasil Ditambahkan!', $employees);
+        return new EmployeeResource(true, 'Data Berhasil Ditambahkan!', $employees);
     }
 
     /**
@@ -69,7 +69,7 @@ class EmployeeController extends Controller
         $employees = Employee::find($id);
 
         //return single post as a resource
-        return new PostResource(true, 'Detail Data!', $employees);
+        return new EmployeeResource(true, 'Detail Data!', $employees);
     }
 
     /**
@@ -102,7 +102,7 @@ class EmployeeController extends Controller
 
 
         //return response
-        return new PostResource(true, 'Data Berhasil Diubah!', $employees);
+        return new EmployeeResource(true, 'Data Berhasil Diubah!', $employees);
     }
 
     /**
@@ -121,6 +121,6 @@ class EmployeeController extends Controller
         $employees->delete();
 
         //return response
-        return new PostResource(true, 'Data Berhasil Dihapus!', null);
+        return new EmployeeResource(true, 'Data Berhasil Dihapus!', null);
     }
 }
